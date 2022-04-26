@@ -1,0 +1,25 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+CREATE VIEW [dbo].[VCliente]
+AS
+    SELECT 
+        C.IDCLI AS 'IDCLI',
+        C.NOMCLI AS 'NOMCLI',
+        C.APECLI AS 'APECLI',
+        C.DNICLI AS 'DNICLI',
+        C.CELCLI AS 'CELCLI',
+        C.DIRCLI AS 'DIRCLI',
+        C.EMACLI AS 'EMACLI',
+        C.ESTCLI AS 'ESTCLI',
+        CONCAT(U.DISUBI, ', ', U.PROUBI, ', ',U.DEPUBI) AS 'CODUBI',
+        ROW_NUMBER() OVER (ORDER BY C.IDCLI DESC) AS ORDEN
+    FROM 
+        CLIENTE AS C
+        INNER JOIN UBIGEO AS U on
+        C.CODUBI = U.CODUBI
+     WHERE 
+        C.ESTCLI = 'A'
+GO
