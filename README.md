@@ -1,6 +1,6 @@
 # T09_DBsoftbloom 
 
-Contriburtos:
+Contributors:
 
 - Jose Zegarra 
 - Julia Quispe
